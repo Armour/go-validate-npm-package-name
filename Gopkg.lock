@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "github.com/Armour/go-validate-npm-package-name"
+  packages = ["cmd/validate"]
+  revision = "495e8ffbae2671654ffb26c04d0418570d7c45e6"
+
+[[projects]]
   name = "github.com/Masterminds/semver"
   packages = ["."]
   revision = "c7af12943936e8c39859482e61f0574c2fd7fc75"
@@ -27,6 +33,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "3fef8e45146f0db2e839a55c67c4ee7c6e2c95057f1eaa815205907aee1e72b7"
+  inputs-digest = "4a6de8f4c8040e5a7e7e25ebbf753b5dabf0c5c9ca239247e201a31aa1439707"
   solver-name = "gps-cdcl"
   solver-version = 1
