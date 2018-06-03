@@ -1,3 +1,4 @@
+// Package validate checks if the given name is an acceptable npm package name.
 package validate
 
 import (
@@ -18,11 +19,13 @@ type Result struct {
 
 const (
 	scopedPackagePattern = `^(?:@([^/]+?)[/])?([^/]+?)$`
+	specialCharacters    = `[\~\'\!\(\)\*]+`
 )
 
 var (
-	scopedPackageRe = regexp.MustCompile(scopedPackagePattern)
-	blacklist       = []string{
+	scopedPackageRe     = regexp.MustCompile(scopedPackagePattern)
+	specialCharactersRe = regexp.MustCompile(specialCharacters)
+	blacklist           = []string{
 		"node_modules",
 		"favicon.ico",
 	}
@@ -82,17 +85,17 @@ func Validate(name string) Result {
 		warnings = append(warnings, "name can no longer contain capital letters")
 	}
 
-	if strings.Trim(name, "~'!()*") != name {
+	if specialCharactersRe.ReplaceAllString(name, "") != name {
 		warnings = append(warnings, "name can no longer contain special characters (\"~'!()*\")")
 	}
 
-	if url.QueryEscape(name) != name {
+	if urlSafe(name) != name {
 		// Maybe it's a scoped package name, like @user/package
 		nameMatch := scopedPackageRe.FindStringSubmatch(name)
 		if len(nameMatch) > 2 {
 			user := nameMatch[1]
 			pkg := nameMatch[2]
-			if url.QueryEscape(user) == user && url.QueryEscape(pkg) == pkg {
+			if urlSafe(user) == user && urlSafe(pkg) == pkg {
 				return done(warnings, errors)
 			}
 		}
@@ -109,4 +112,8 @@ func done(warnings, errors []string) Result {
 		Warnings:            warnings,
 		Errors:              errors,
 	}
+}
+
+func urlSafe(str string) string {
+	return strings.Replace(url.QueryEscape(str), "%21", "!", -1)
 }

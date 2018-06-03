@@ -13,9 +13,20 @@
   packages = ["cmd/builtins"]
   revision = "865f96b704b2a4ce0bd38900cb303f40df6f7953"
 
+[[projects]]
+  name = "github.com/google/go-cmp"
+  packages = [
+    "cmp",
+    "cmp/internal/diff",
+    "cmp/internal/function",
+    "cmp/internal/value"
+  ]
+  revision = "3af367b6b30c263d47e8895973edcca9a49cf029"
+  version = "v0.2.0"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "efd7707d9947441892e2082e1f650927b44133cd1499669552eaad82aeaec392"
+  inputs-digest = "3fef8e45146f0db2e839a55c67c4ee7c6e2c95057f1eaa815205907aee1e72b7"
   solver-name = "gps-cdcl"
   solver-version = 1
