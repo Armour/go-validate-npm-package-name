@@ -3,36 +3,49 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:314e0068df82245e3f292dd7ac31fe1cb45d56d47087fd971765184a69648f60"
   name = "github.com/Armour/go-validate-npm-package-name"
   packages = ["cmd/validate"]
-  revision = "495e8ffbae2671654ffb26c04d0418570d7c45e6"
+  pruneopts = "UT"
+  revision = "dbb2de70dfff2d36c5bec5c091ef74ed6fc855ab"
 
 [[projects]]
+  digest = "1:55388fd080150b9a072912f97b1f5891eb0b50df43401f8b75fb4273d3fec9fc"
   name = "github.com/Masterminds/semver"
   packages = ["."]
+  pruneopts = "UT"
   revision = "c7af12943936e8c39859482e61f0574c2fd7fc75"
   version = "v1.4.2"
 
 [[projects]]
   branch = "master"
+  digest = "1:a89670828254daf145e053bf4359ebd781ec48f83f5357cbc1196455ef66a58b"
   name = "github.com/armour/go-node-builtins"
   packages = ["cmd/builtins"]
-  revision = "865f96b704b2a4ce0bd38900cb303f40df6f7953"
+  pruneopts = "UT"
+  revision = "2f7fa844fb4b6ccd88471c75e23bac98f486680e"
 
 [[projects]]
+  digest = "1:bf40199583e5143d1472fc34d10d6f4b69d97572142acf343b3e43136da40823"
   name = "github.com/google/go-cmp"
   packages = [
     "cmp",
     "cmp/internal/diff",
+    "cmp/internal/flags",
     "cmp/internal/function",
-    "cmp/internal/value"
+    "cmp/internal/value",
   ]
-  revision = "3af367b6b30c263d47e8895973edcca9a49cf029"
-  version = "v0.2.0"
+  pruneopts = "UT"
+  revision = "6f77996f0c42f7b84e5a2b252227263f93432e9b"
+  version = "v0.3.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "4a6de8f4c8040e5a7e7e25ebbf753b5dabf0c5c9ca239247e201a31aa1439707"
+  input-imports = [
+    "github.com/Armour/go-validate-npm-package-name/cmd/validate",
+    "github.com/armour/go-node-builtins/cmd/builtins",
+    "github.com/google/go-cmp/cmp",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
